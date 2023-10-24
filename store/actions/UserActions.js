@@ -2,11 +2,12 @@ import { UserActionType, actions, apiBaseUrl, serverApiBaseUrl } from "@/constan
 import axios from "axios";
 
 export const fetchUserManagment = () => {
-    return (dispatch) => {
+    return async (dispatch) => {
         try {
-            const res = axios.get(apiBaseUrl + actions.USERS);
+            
+            const { data } = await axios.get(apiBaseUrl + actions.USERS);
 
-            dispatch({ type: UserActionType.FETCH_USERS, payload: res.data })
+            dispatch({ type: UserActionType.FETCH_USERS, payload: data })
         } catch (error) {
             console.log(error)
         }

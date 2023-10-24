@@ -1,21 +1,31 @@
 "use client"
 
 import { fetchUserManagment } from "@/store/actions/UserActions";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-export default function Home() {
-
-  const { users } = useSelector((state) => state); // Replace 'charity' with the name you've given to your reducer
+const Home = () => {
+  const [usersData, setUsersData] = useState()
   const dispatch = useDispatch();
-  console.log(users)
+  const { user } = useSelector((state) => state);
+  // console.log(user)
 
   useEffect(() => {
     dispatch(fetchUserManagment())
-  }, [dispatch])
+    setUsersData(user.payload.Users)
+  }, [dispatch]);
+
+
+
 
   return (
-    <div>
-      hello
-    </div>
+    <ul>
+      {usersData &&
+        usersData.map((user) => (
+          <li>{user.name}</li>
+        ))
+      }
+    </ul>
   )
 }
+
+export default Home

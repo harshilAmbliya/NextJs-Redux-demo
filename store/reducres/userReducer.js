@@ -1,19 +1,17 @@
 import { UserActionType } from "@/constant";
 
-const initialState = {
- data : [],
-};
-
-const userReducers = (state = initialState, action) => {
+const userReducers = (state = {}, action) => {
   switch (action.type) {
     case UserActionType.FETCH_USERS:
       return {
         ...state,
-        userManagment: action.payload,
-      };
+        payload: action.payload
+      }
+
     default:
       return state;
   }
 };
 
 export default userReducers;
+
