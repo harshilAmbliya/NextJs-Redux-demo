@@ -1,6 +1,6 @@
 "use client"
 
-import { updateUser } from '@/store/actions/UserActions';
+import { fetchUserManagment, updateUser } from '@/store/actions/UserActions';
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 
@@ -13,9 +13,10 @@ const Form = ({ user }) => {
         console.log(user)
     }, [user, dispatch])
 
-    const handleSubmitData = (e) => {
+    const handleSubmitData = async (e) => {
         e.preventDefault();
-        dispatch(updateUser(formData.id, formData))
+        await dispatch(updateUser(formData.id, formData))
+        dispatch(fetchUserManagment())
     }
 
 

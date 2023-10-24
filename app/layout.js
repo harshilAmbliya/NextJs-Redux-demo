@@ -8,14 +8,13 @@ import ReduxProviders from '@/providers/ReduxProviders'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Redux With Persist',
-  description: 'create next app with redux persists',
+  title: 'Redux',
+  description: 'create next app with redux ',
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      
       <body className={inter.className} >
         <ReduxProviders >
           {children}
