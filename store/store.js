@@ -6,14 +6,14 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'
 
 
-const persistConfig = {
-  key: 'root',
-  storage, // Use localStorage for data persistence
-};
+// const persistConfig = {
+//   key: 'root',
+//   storage, // Use localStorage for data persistence
+// };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+// const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const store = createStore(persistedReducer, applyMiddleware(thunk));
-const persistor = persistStore(store);
+const store = createStore(rootReducer, applyMiddleware(thunk));
+// const persistor = persistStore(store);
 
-export { store, persistor };
+export { store };
